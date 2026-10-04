@@ -1,0 +1,46 @@
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  text-align: center;
+}
+
+
+#board {
+  display: grid;
+  grid-template-columns: repeat(9, 50px);
+  grid-template-rows: repeat(9, 50px);
+}
+
+.cell {
+  background-color: gray;
+  border: 1px solid black;
+  opacity: 1;
+  transition-duration: 0.5s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.mine {
+  background-color: red;
+}
+
+.cell:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.revealed {
+  background-color: blue;
+}

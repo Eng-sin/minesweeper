@@ -33,6 +33,9 @@ export function toggleFlag(gameState: GameState, targetRow: number, targetCol: n
     let flagDiff: number;
     switch (targetCell.status) {
         case 'hidden':
+            if (gameState.remainingFlags == 0) {
+                return gameState;
+            }
             newStatus = 'flagged';
             flagDiff = -1;
             break;
@@ -78,6 +81,7 @@ export function placeMines(gameState: GameState, targetRow: number, targetCol: n
 
     return {
         ...gameState,
+        status: 'playing',
         board: boardWithMine
     };
 }
