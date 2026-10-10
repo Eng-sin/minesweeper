@@ -42,5 +42,5 @@ body {
 }
 
 .revealed {
-  background-color: blue;
+  background-color: rgba(128, 128, 128, 0.5);
 }

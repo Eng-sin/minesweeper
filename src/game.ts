@@ -111,14 +111,16 @@ export function openCell(gameState: GameState, targetRow: number, targetCol: num
     }
     // 爆弾だったらlostを設定して返す
     if (targetCell.isMine) {
+        const newBoard: Cell[][] = gameState.board.map((rowCells) => rowCells.map((cell) => cell.status !== 'revealed' ? { ...cell, status: 'revealed' } : cell));
         return {
             ...gameState,
+            board: newBoard,
             status: 'lost'
         };
 
         // 爆弾でなかった場合
     } else {
-        let newBoard: Cell[][] = gameState.board.map((rowCells) => rowCells.map((cell) => cell.row === targetRow && cell.col === targetCol ? { ...cell, status: 'revealed' } : cell));
+        const newBoard: Cell[][] = gameState.board.map((rowCells) => rowCells.map((cell) => cell.row === targetRow && cell.col === targetCol ? { ...cell, status: 'revealed' } : cell));
         let newGameState: GameState = { ...gameState, board: newBoard };
         if (targetCell.neighborMines === 0) {
             for (let r = 0; r < gameState.board.length; r++) {
